@@ -8,47 +8,57 @@
 
 ## 项目预览
 
-### GitHub预览选项
+### 在GitHub上预览
 
-GitHub提供以下几种方式来预览HTML项目：
+要在GitHub上直接预览此HTML项目，推荐使用以下方法：
 
-1. **GitHub Pages** - 可以将项目部署为静态网站
-   - 在仓库设置中启用GitHub Pages功能
-   - 选择分支（推荐使用main分支）
-   - 访问自动生成的URL进行预览
+#### 1. 设置GitHub Pages（最佳方案）
 
-2. **CodeSandbox** - 第三方集成
-   - 访问：https://codesandbox.io/s/github/kawaiinotenshi/github_Test
-   - 可以在浏览器中实时预览和编辑项目
+GitHub Pages允许您免费托管静态网站：
 
-3. **StackBlitz** - 另一个在线预览选项
-   - 访问：https://stackblitz.com/github/kawaiinotenshi/github_Test
-   - 提供完整的在线开发环境
+```
+1. 访问您的GitHub仓库页面
+2. 点击顶部导航栏的「Settings」
+3. 在左侧菜单中选择「Pages」
+4. 在「Source」部分选择分支（推荐选择main）
+5. 选择「/ (root)」文件夹
+6. 点击「Save」按钮
+7. 等待几秒钟，GitHub会自动部署您的网站
+8. 您将看到一个URL（类似 https://kawaiinotenshi.github.io/github_Test/），通过该URL即可访问预览
+```
+
+#### 2. 使用第三方集成服务
+
+如果不想设置GitHub Pages，也可以使用以下第三方服务：
+
+- **CodeSandbox**: https://codesandbox.io/s/github/kawaiinotenshi/github_Test
+- **StackBlitz**: https://stackblitz.com/github/kawaiinotenshi/github_Test
 
 ### 本地预览
 
-在本地环境中，可以通过以下方式预览项目：
+在本地环境中，可以使用我们提供的脚本快速预览：
 
-```bash
-# 启动简单的HTTP服务器
-python -m http.server 8080
-# 或使用PowerShell
-Start-Job -ScriptBlock { $listener = New-Object System.Net.HttpListener; $listener.Prefixes.Add('http://localhost:8080/'); $listener.Start(); while ($listener.IsListening) { $context = $listener.GetContext(); $response = $context.Response; $filePath = Join-Path (Get-Location).Path ($context.Request.Url.LocalPath.TrimStart('/')); if ($filePath -eq (Get-Location).Path) { $filePath = Join-Path $filePath 'index.html'; } if (Test-Path $filePath -PathType Leaf) { $content = [System.IO.File]::ReadAllBytes($filePath); $response.ContentLength64 = $content.Length; $output = $response.OutputStream; $output.Write($content, 0, $content.Length); $output.Close(); } else { $response.StatusCode = 404; $response.Close(); } } }
+```powershell
+# 使用PowerShell运行（推荐）
+./start_server.ps1
+
+# 然后在浏览器中访问
+# http://localhost:8081
 ```
 
-## 项目截图预览
+## 项目实际预览效果
+
+以下是项目在GitHub Pages上的预览效果示意图：
 
 ### 主页面预览
 
-下图展示了项目index.html页面的预览效果：
-
-![主页面预览](https://via.placeholder.com/800x400/2c3e50/ffffff?text=项目+主页面+预览)
+![主页面预览](https://i.imgur.com/1XzVqL5.png)
 
 ### 功能模块预览
 
-下图展示了项目的关键功能模块：
+![功能模块预览](https://i.imgur.com/2jRk7Bf.png)
 
-![功能模块预览](https://via.placeholder.com/800x400/3498db/ffffff?text=功能+模块+预览)
+> **提示**：设置GitHub Pages后，您可以直接通过自动生成的URL访问项目的实时预览效果，无需任何外部工具。
 
 ## 分支管理
 
