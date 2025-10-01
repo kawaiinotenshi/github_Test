@@ -14,13 +14,11 @@ node_modules
 
 # Testing
 coverage
-*.lcov
-.nyc_output
 
-# Production build
+# Production
+build
 dist
 dist-ssr
-build
 *.local
 
 # Editor directories and files
@@ -43,3 +41,34 @@ build
 
 # OS generated files
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Miscellaneous
+.cache
+.parcel-cache
+.next
+.nuxt
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+.yarn-integrity
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
